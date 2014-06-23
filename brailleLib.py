@@ -8,6 +8,7 @@ systems.
 """
 # TODO: 
 # - FIX checkLib TO WORK WITH THE 2D ARRAYS ~~ Priority
+# - Make checkLib compare with master braille array document
 # - Add numbers modifier
 # - Create error handling for import
 # - Add custom braille creator
@@ -118,6 +119,7 @@ letters = {'a' : [[1, 0],
 
 # This function checks to make sure all letters are assigned to a braille array of length 6,
 # and that they are comprised of only "on" or "off" values.
+# NEEDS TO BE UPDATED FOR 2D ARRAYS.
 def checkLib():
     count = 0
     letcheck = []
