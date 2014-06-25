@@ -8,7 +8,6 @@ systems.
 """
 from tkinter import *
 # TODO: 
-# - Figure out why display isn't working right ~~PRIORITY
 # - FIX numbers modifier
 # - Create error handling for import
 # - Add custom braille creator
@@ -122,16 +121,16 @@ letters = {'a' : [1, 0,
 # MODE 1 is the Nemeth, or mathematical code. 
 MODE = 0
 
-numbers = {1 : letters['a'],
-		   2 : letters['b'],
-		   3 : letters['c'],
-		   4 : letters['d'],
-		   5 : letters['e'],
-		   6 : letters['f'],
-		   7 : letters['g'],
-		   8 : letters['h'],
-		   9 : letters['i'],
-		   0 : letters['j']}
+numbers = {'1' : letters['a'],
+		   '2' : letters['b'],
+		   '3' : letters['c'],
+		   '4' : letters['d'],
+		   '5' : letters['e'],
+		   '6' : letters['f'],
+		   '7' : letters['g'],
+		   '8' : letters['h'],
+		   '9' : letters['i'],
+		   '0' : letters['j']}
 
 # This function converts the "numbers" dictionary between Nemeth and Literary modes 
 def toggleMode():
@@ -149,16 +148,16 @@ def toggleMode():
 		return "Mode switched to Nemeth"
 
 	elif MODE == 1:
-		numbers = {1 : letters['a'],
-		           2 : letters['b'],
-		           3 : letters['c'],
-		           4 : letters['d'],
-	        	   5 : letters['e'],
-	        	   6 : letters['f'],
-	        	   7 : letters['g'],
-	        	   8 : letters['h'],
-	        	   9 : letters['i'],
-	        	   0 : letters['j']}
+		numbers = {'1' : letters['a'],
+		           '2' : letters['b'],
+		           '3' : letters['c'],
+		           '4' : letters['d'],
+	        	   '5' : letters['e'],
+	        	   '6' : letters['f'],
+	        	   '7' : letters['g'],
+	        	   '8' : letters['h'],
+	        	   '9' : letters['i'],
+	        	   '0' : letters['j']}
 		MODE = 0
 		print("Mode switched to Literary")
 		return "Mode switched to Literary"
@@ -292,45 +291,42 @@ gui = Tk()
 #    def __init__():
 
 pips = ["black", "black", "black", "black", "black", "black"]
-
 # DEBUGGING
 #pips = ["white", "blue", "red", "yellow", "green", "pink"]
+
 
 def displayBraille(char):
     global letters, numbers, pips
 
-    #char.lower()
+    char.lower()
+    print(letters[char])
 
     if char == "0" or char == "1" or char == "2" or char == "3" or char == "4" or char == "5" or char == "6" or char == "7" or char == "8" or char == "9":
-        for i in numbers:
-            for j in numbers[i]:
-                if numbers[i][j] == 1:
-                    pips[j] = "white"
-                else:
-                    pips[j] = "black"
+        for i in numbers[char]:
+            if numbers[char][i] == 1:
+                pips[i] = "white"
 
-#    elif type(char) == 'str' and char in letters:
-#        for i in letters:
-#            for j in letters[i]:
-#                if letters[i][j] == 1:
-#                    pips[j] = "white"
-#    else:
-#        print("Error: invalid character")
+            #else:
+            #    pips[i] = "black"
 
-    else:  
-        for i in letters:
-            for j in letters[i]:
-                if letters[i][j] == 1:
-                    pips[j] = "white"
-                else:
-                    pips[j] = "black"
+    else: #and char in letters:
+        for i in letters[char]:
+            if letters[char][i] == 1:
+                pips[i] = "white"
+        
+            #else:
+            #    pips[i] = "black"
+    #else:
+    #    print("Error: invalid character")
+
+
 
 
 
 
 disp = Canvas(gui, height = HEIGHT, width = WIDTH, bg = "black")
 
-displayBraille('h')
+displayBraille('z')
 
 #pip0
 disp.create_oval(WIDTH / 3, HEIGHT / 4, WIDTH / 3 + 10, HEIGHT / 4 + 10, fill = pips[0])
