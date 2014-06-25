@@ -293,6 +293,9 @@ gui = Tk()
 
 pips = ["black", "black", "black", "black", "black", "black"]
 
+# DEBUGGING
+#pips = ["white", "blue", "red", "yellow", "green", "pink"]
+
 def displayBraille(char):
     global letters, numbers, pips
 
