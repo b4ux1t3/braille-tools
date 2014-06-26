@@ -7,8 +7,10 @@ including the ability to add new braille
 systems. 
 """
 from tkinter import *
+import sys
 # TODO: 
 # - FIX numbers modifier
+# - Fix display
 # - Create error handling for import
 # - Add custom braille creator
 # - Clean this crap up!
@@ -291,7 +293,7 @@ wait = input("Press Enter to continue. . .")
 HEIGHT = 400
 WIDTH = 225
 gui = Tk()
-
+#entrygui = Tk()
 #class Pip():
 #    def __init__():
 
@@ -300,7 +302,7 @@ pips = ["black", "black", "black", "black", "black", "black"]
 #pips = ["white", "blue", "red", "yellow", "green", "pink"]
 
 
-def displayBraille(char):
+def setBraille(char):
     global letters, numbers, pips
 
     char.lower()
@@ -324,14 +326,11 @@ def displayBraille(char):
     #else:
     #    print("Error: invalid character")
     print(pips)
+    
 
 
-userEntry = ""
 
-def getBraille():
-    #txt = userEntry.get()
-    displayBraille('f')
-    disp.pack()
+    
 
 disp = Canvas(gui, height = HEIGHT, width = WIDTH, bg = "black")
 
@@ -354,10 +353,23 @@ disp.create_oval(WIDTH / 3, (HEIGHT / 4) * 3, WIDTH / 3 + 10, ((HEIGHT / 4) * 3)
 disp.create_oval((WIDTH / 3) * 2, (HEIGHT / 4) * 3, ((WIDTH / 3) * 2) + 10, ((HEIGHT / 4) * 3) + 10, fill = pips[5])
 
 
-entry = Entry(gui, textvariable = userEntry).pack()
-submit = Button(gui, text = "Submit", command = getBraille).pack()
+#entry = Entry(entrygui, textvariable = userEntry).pack()
+#submit = Button(entrygui, text = "Submit", command = getBraille).pack()
 
 #DEBUGGING
 print(pips)
 
-gui.mainloop()
+def main():
+    userInp = input("Enter a letter to be displayed in braille, then press Enter: ")
+    setBraille(userInp)
+    disp.pack()
+    gui.mainloop()
+
+ex = False
+
+while ex == False:
+    main()
+    exit = input("Type \"exit\" to exit, or Enter to pick another letter! ")
+    exit.lower()
+    if exit == "exit":
+        ex = True
