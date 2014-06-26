@@ -300,7 +300,7 @@ def displayBraille(char):
 
     char.lower()
     print(letters[char])
-
+# I don't work yet!
     if char == "0" or char == "1" or char == "2" or char == "3" or char == "4" or char == "5" or char == "6" or char == "7" or char == "8" or char == "9":
         for i in range(len(numbers[char])):
             if numbers[char][i] == 1:
@@ -326,7 +326,7 @@ def displayBraille(char):
 
 disp = Canvas(gui, height = HEIGHT, width = WIDTH, bg = "black")
 
-displayBraille('4')
+displayBraille('z')
 
 #pip0
 disp.create_oval(WIDTH / 3, HEIGHT / 4, WIDTH / 3 + 10, HEIGHT / 4 + 10, fill = pips[0])
